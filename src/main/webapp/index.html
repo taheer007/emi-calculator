@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Farmer Loan EMI Calculator</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>🚜 Farmer Loan EMI Calculator</h1>
+
+        <form name="loanForm" action="LoanServlet" method="post" onsubmit="return validateForm();">
+            <div class="input-group">
+                <label for="loanAmount">Loan Amount (₹):</label>
+                <input type="number" name="loanAmount" id="loanAmount" placeholder="Enter loan amount" required>
+            </div>
+
+            <div class="input-group">
+                <label for="timeDuration">Repayment Duration (in months):</label>
+                <input type="number" name="timeDuration" id="timeDuration" placeholder="e.g., 12, 24" required>
+            </div>
+
+            <div class="input-group">
+                <label for="rate">Rate of Interest (%):</label>
+                <input type="number" name="rate" id="rate" placeholder="e.g., 7.5" step="0.01" value="7.5" required>
+            </div>
+
+            <button type="submit">Calculate EMI</button>
+        </form>
+    </div>
+
+    <script>
+        function validateForm() {
+            const loan = document.getElementById("loanAmount").value;
+            const months = document.getElementById("timeDuration").value;
+            if (loan <= 0 || months <= 0) {
+                alert("Please enter valid positive numbers.");
+                return false;
+            }
+            return true;
+        }
+    </script>
+
+</body>
+</html>
